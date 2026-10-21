@@ -74,8 +74,8 @@ async def custom_site():
         __import__(__name__).__file__ = main
 
         # now make a prompt
-        msg  = "Коснитесь экрана, чтобы начать"
-        platform.window.infobox.innerText = msg
+        msg  = "\u041a\u043e\u0441\u043d\u0438\u0442\u0435\u0441\u044c \u044d\u043a\u0440\u0430\u043d\u0430, \u0447\u0442\u043e\u0431\u044b \u043d\u0430\u0447\u0430\u0442\u044c \u25b6"
+        platform.window.knight_tap_prompt()
         print("\n"*4, f"    * Waiting for media user engagement. {msg} *" , "\n"*4)
 
         while not platform.window.MM.UME:
@@ -178,6 +178,13 @@ function show_infobox() {
 
     infobox.style.left = left + "px";
     infobox.style.top = top + "px";
+}
+
+
+// подсказка «коснитесь экрана» задаётся здесь, в JS: так русские буквы не портятся
+function knight_tap_prompt() {
+    infobox.innerText = "Коснитесь экрана, чтобы начать ▶"
+    try { show_infobox() } catch (e) {}
 }
 
 </script>
